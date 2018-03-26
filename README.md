@@ -1,12 +1,12 @@
 # hitbtc-node
 
-# Market data
-## Currencies
-## Symbols
-## Tickers
-## Trades
-## Orderbook
-## Candles
+## Market data
+#### Currencies
+#### Symbols
+#### Tickers
+#### Trades
+#### Orderbook
+#### Candles
 
-# Trading
+## Trading
 In development
