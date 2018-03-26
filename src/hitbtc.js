@@ -13,6 +13,13 @@ function Hitbtc(accessKey, secretKey) {
 }
 
 Hitbtc.prototype = {
+    setSignature: function (path, obj) {
+        var nonce, message, signature;
+        nonce = new Date().getTime();
+        message = nonce + this.apiBase + ((Object.keys(obj).length > 0) ? JSON.stringify(obj) : '');
+        signature = crypto.createHmac('sha256', this.secretKey).update(message).digest('hex');
+        this
+    },
     request: function(options) {
         const req = requestPromise({
             uri: options,
