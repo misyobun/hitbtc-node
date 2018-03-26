@@ -1,0 +1,33 @@
+{
+  "name": "msb_hitbtc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/hitbtc.js",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misyobun/hitbtc-node.git"
+  },
+  "keywords": [
+    "hitbtc",
+    "hitbtc-node"
+  ],
+  "author": "misyobun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/misyobun/hitbtc-node/issues"
+  },
+  "homepage": "https://github.com/misyobun/hitbtc-node#readme",
+  "dependencies": {
+    "underscore": "latest",
+    "bluebird": "latest",
+    "request": "latest",
+    "request-promise": "latest"
+  }
+}
