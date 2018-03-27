@@ -13,12 +13,16 @@ function Hitbtc(accessKey, secretKey) {
 }
 
 Hitbtc.prototype = {
-    setSignature: function (path, obj) {
+    makeHeader: function (queryData) {
         var nonce, message, signature;
         nonce = new Date().getTime();
         message = nonce + this.apiBase + ((Object.keys(obj).length > 0) ? JSON.stringify(obj) : '');
-        signature = crypto.createHmac('sha256', this.secretKey).update(message).digest('hex');
-        this
+        return {
+            "Content-Type": "application/json",
+            "ACCESS-KEY": this.accessKey,
+            "ACCESS-NONCE": nonce,
+            "ACCESS-SIGNATURE": crypto.createHmac("sha256", this.secretKey).update(new Buffer(message)).digest('hex').toString();
+          };
     },
     request: function(options) {
         const req = requestPromise({
@@ -26,6 +30,7 @@ Hitbtc.prototype = {
             method: "GET",
             timeout: this.timeout,
             forever: this.keepalive,
+            headers: makeHeader(data),
         })
         return req.then(function(res) {
             return JSON.parse(res);
