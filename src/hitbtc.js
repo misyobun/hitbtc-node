@@ -13,13 +13,20 @@ function Hitbtc(accessKey, secretKey) {
 }
 
 Hitbtc.prototype = {
-    request: function(options) {
+    makeHeader: function () {
+        return {
+            "Authorization" : "Basic " + new Buffer(this.accessKey + ':' + this.secretKey).toString("base64")
+          };
+    },
+    request: function(uri, data) {
         const req = requestPromise({
-            uri: options,
+            uri: uri,
             method: "GET",
             timeout: this.timeout,
             forever: this.keepalive,
+            headers: this.makeHeader()
         })
+
         return req.then(function(res) {
             return JSON.parse(res);
         }).catch(function(err) {
@@ -51,6 +58,10 @@ Hitbtc.prototype = {
         var path = "/public/candles/" + symbol;
         return this.request(this.apiBase + path);
     },
+    getBalance: function() {
+        var path = "/trading/balance";
+        return this.request(this.apiBase + path);
+    }
 };
 
 exports.Hitbtc = Hitbtc;
