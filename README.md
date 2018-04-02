@@ -120,8 +120,6 @@ hitbtc.getTrades("BETETH").then(console.log);
 const Hitbtc = require("./src/hitbtc.js");
 var hitbtc = new Hitbtc.Hitbtc();
 hitbtc.getOrderBook("BETETH").then(console.log);
-
-
 ```
 
 ```
