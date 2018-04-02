@@ -34,15 +34,15 @@ Hitbtc.prototype = {
             throw new Error(err.statusCode);
         })
     },
-    getCurrency: function(currency) {
+    getCurrencies: function(currency) {
         var path = "/public/currency/" + currency;
         return this.request(this.apiBase + path);
     },
-    getSymbol: function(symbol) {
+    getSymbols: function(symbol) {
         var path = "/public/symbol/" + symbol;
         return this.request(this.apiBase + path);
     },
-    getTicker: function(symbol) {
+    getTickers: function(symbol) {
         var path = "/public/ticker/" + symbol;
         return this.request(this.apiBase + path);
     },
@@ -50,7 +50,7 @@ Hitbtc.prototype = {
         var path = "/public/trades/" + symbol;
         return this.request(this.apiBase + path);
     },
-    getOrders: function(symbol) {
+    getOrderBook: function(symbol) {
         var path = "/public/orderbook/" + symbol;
         return this.request(this.apiBase + path);
     },
